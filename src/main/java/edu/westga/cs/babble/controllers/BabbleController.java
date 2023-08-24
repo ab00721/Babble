@@ -104,7 +104,13 @@ public class BabbleController implements Initializable {
     }
 
     public void reset(MouseEvent event) {
-    	
+    	for(Tile tile : this.playedWord.tiles()) {
+    		this.tileRack.append(tile);
+    	}
+		this.gameTiles.setItems(this.tileRack.tiles());
+    	this.setRack();
+    	this.playedWord.clear();
+    	this.setWord();
     }
     
     private void setRack() {
