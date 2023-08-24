@@ -9,19 +9,19 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs.babble.controllers.BabbleController">
    <children>
-      <Label layoutX="21.0" layoutY="18.0" text="Tiles">
+      <Label accessibleText="Tiles" layoutX="21.0" layoutY="18.0" text="Tiles">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="21.0" layoutY="92.0" text="Your Word">
+      <Label accessibleText="Your Word" layoutX="21.0" layoutY="92.0" text="Your Word">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="playButton" layoutX="309.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#play" text="Play Word" />
-      <Button fx:id="resetButton" layoutX="251.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#reset" text="Reset" />
-      <Label layoutX="165.0" layoutY="211.0" text="Score:">
+      <Button fx:id="playButton" accessibleText="Play Word" layoutX="309.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#play" text="Play Word" />
+      <Button fx:id="resetButton" accessibleText="Reset" layoutX="251.0" layoutY="166.0" mnemonicParsing="false" onMouseClicked="#reset" text="Reset" />
+      <Label accessibleText="Score" layoutX="165.0" layoutY="211.0" text="Score:">
          <font>
             <Font size="14.0" />
          </font>
