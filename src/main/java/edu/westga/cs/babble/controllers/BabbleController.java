@@ -159,7 +159,8 @@ public class BabbleController implements Initializable {
     	public void updateItem(Tile item, boolean empty) {
     		super.updateItem(item, empty);
     		if (item != null) {
-    			setText(String.valueOf(item.getLetter()));
+    			super.setText(String.valueOf(item.getLetter()));
+    			super.setAccessibleText(String.valueOf(item.getLetter()));
     		}
     	}
     }
