@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -26,8 +27,17 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="scoreTF" layoutX="214.0" layoutY="203.0" prefHeight="34.0" prefWidth="166.0" />
-      <ListView fx:id="gameTilesLV" layoutX="19.0" layoutY="47.0" onMouseClicked="#handleTileClick" orientation="HORIZONTAL" prefHeight="33.0" prefWidth="362.0" />
-      <ListView fx:id="wordLV" layoutX="19.0" layoutY="121.0" onMouseClicked="#handleWordClick" orientation="HORIZONTAL" prefHeight="33.0" prefWidth="362.0" />
+      <TextField fx:id="scoreTF" layoutX="214.0" layoutY="203.0" prefHeight="34.0" prefWidth="166.0">
+         <tooltip>
+            <Tooltip text="Your total score appears here." />
+         </tooltip></TextField>
+      <ListView fx:id="gameTilesLV" layoutX="19.0" layoutY="47.0" onMouseClicked="#handleTileClick" orientation="HORIZONTAL" prefHeight="33.0" prefWidth="362.0">
+         <tooltip>
+            <Tooltip text="The tiles in this rack can be clicked to create a word." />
+         </tooltip></ListView>
+      <ListView fx:id="wordLV" layoutX="19.0" layoutY="121.0" onMouseClicked="#handleWordClick" orientation="HORIZONTAL" prefHeight="33.0" prefWidth="362.0">
+         <tooltip>
+            <Tooltip text="Your word appears here. Click a letter to put in back on the tile rack. " />
+         </tooltip></ListView>
    </children>
 </AnchorPane>
