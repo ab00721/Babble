@@ -21,7 +21,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
-
+/**
+ * BabbleController is the controller for the babble game
+ * @author Anna Blood
+ * @version CS6261
+ */
 public class BabbleController implements Initializable {
 
     @FXML
@@ -45,6 +49,9 @@ public class BabbleController implements Initializable {
     private SimpleIntegerProperty score;
     private int totalScore;
 
+    /**
+	 * Initializes the babble controller
+	 */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     	this.tileRack = new TileRack();
@@ -56,6 +63,9 @@ public class BabbleController implements Initializable {
     	this.createTileRack();
     }
     
+    /**
+	 * Creates a tile rack with max tiles and clears the played word
+	 */
     private void createTileRack() {
     	while (this.tileRack.getNumberOfTilesNeeded() > 0) {
     		try {
@@ -71,6 +81,9 @@ public class BabbleController implements Initializable {
     	this.playedWord.clear();
     }
     
+    /**
+	 * Handles Mouse Event for clicking a tile in the tile rack by moving it to the word rack
+	 */
     public void handleTileClick(MouseEvent event) {
     	Tile selectedTile = gameTilesLV.getSelectionModel().getSelectedItem();
     	if (selectedTile != null) {
@@ -84,11 +97,14 @@ public class BabbleController implements Initializable {
 			}
     	}
 		this.gameTilesLV.setItems(this.tileRack.tiles());
-    	this.setRack();
+		this.setRack();
     	this.wordLV.setItems(this.playedWord.tiles());
     	this.setWord();
     }
     
+    /**
+	 * Handles mouse event for clicking a tile in the word rack by moving it back to the tile Rack
+	 */
     public void handleWordClick(MouseEvent event) {
     	Tile selectedTile = wordLV.getSelectionModel().getSelectedItem();
     	if (selectedTile != null) {
@@ -102,11 +118,15 @@ public class BabbleController implements Initializable {
 			}
     	}
 		this.gameTilesLV.setItems(this.tileRack.tiles());
-    	this.setRack();
+		this.setRack();
 		this.wordLV.setItems(this.playedWord.tiles());
-    	this.setWord();
+		this.setWord();
     }
     
+    /**
+	 * Handles mouse click for play button by verifying the played word is valid 
+	 * and calling the updateScore method or sending an error message for invalid word
+	 */
     public void play(MouseEvent event) {
     	WordDictionary dictionary = new WordDictionary();
     	if (dictionary.isValidWord(this.playedWord.getHand())) {
@@ -121,21 +141,33 @@ public class BabbleController implements Initializable {
     	}
     }
 
+    /**
+	 * Handles mouse click on reset button by clearing the played word and reseting the tileRack
+	 */
     public void reset(MouseEvent event) {
+
     	for(Tile tile : this.playedWord.tiles()) {
     		this.tileRack.append(tile);
     	}
-		this.gameTilesLV.setItems(this.tileRack.tiles());
-    	this.setRack();
+
     	this.playedWord.clear();
+    	this.gameTilesLV.setItems(this.tileRack.tiles());
+		this.setRack();
+    	this.wordLV.setItems(this.playedWord.tiles());
     	this.setWord();
     }
     
+    /**
+	 * Updates the score by adding the played word score to the total score
+	 */
     private void updateScore() {
     	this.totalScore += this.playedWord.getScore();
     	this.score.set(this.totalScore);
     }
     
+    /**
+	 * Sets the cell factory of the tileRack
+	 */
     private void setRack() {
     	this.gameTilesLV.setCellFactory(new Callback<ListView<Tile>, ListCell<Tile>>() {
     		@Override
@@ -145,6 +177,9 @@ public class BabbleController implements Initializable {
     	});
     }
     
+    /**
+	 * Sets the cell factory of the word rack
+	 */
     private void setWord() {
     	this.wordLV.setCellFactory(new Callback<ListView<Tile>, ListCell<Tile>>() {
     		@Override
@@ -154,6 +189,9 @@ public class BabbleController implements Initializable {
     	});
     }
     
+    /**
+	 * updates the items in tile cells
+	 */
     static class TileCell extends ListCell<Tile> {
     	@Override
     	public void updateItem(Tile item, boolean empty) {
