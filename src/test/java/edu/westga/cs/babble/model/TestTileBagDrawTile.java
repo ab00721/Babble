@@ -25,12 +25,13 @@ public class TestTileBagDrawTile {
 	}
 	
 	@Test
-	public void canNotDrawTooManyTiles() {
-		assertThrows(EmptyTileBagException.class, () -> {
-			for (int i = 0; i < 99; i++) {
-				this.tileBag.drawTile();
-			}
-		});
+	public void canNotDrawTooManyTiles() throws EmptyTileBagException {
+		
+		for (int i = 0; i < 98; i++) {
+			this.tileBag.drawTile();
+		}
+		assertTrue(this.tileBag.isEmpty());
+		assertThrows(EmptyTileBagException.class, () -> this.tileBag.drawTile());
 	}
 	
 	@Test

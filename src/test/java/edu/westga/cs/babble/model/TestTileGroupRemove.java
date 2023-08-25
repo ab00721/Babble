@@ -1,6 +1,7 @@
 package edu.westga.cs.babble.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -34,7 +35,7 @@ private TileGroup tileGroup;
 		Tile tile2 = new Tile('B');
 		this.tileGroup.append(tile1);
 		assertEquals("A", this.tileGroup.getHand());
-		assertTrue(!this.tileGroup.tiles().contains(tile2));
+		assertFalse(this.tileGroup.tiles().contains(tile2));
 		assertThrows(TileNotInGroupException.class, () -> this.tileGroup.remove(tile2));
 	}
 	
